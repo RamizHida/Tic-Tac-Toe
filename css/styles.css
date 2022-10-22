@@ -1,0 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  box-sizing: border-box;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: yellow;
+  height: 40rem;
+  width: 50rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  gap: 0.5rem;
+}
+
+header {
+  text-align: center;
+  margin-top: 5%;
+  font-size: 3rem;
+}
+
+.field {
+  /* border: 1px solid black; */
+  border-radius: 0.5rem;
+  background: blue;
+}
+
+.players {
+  display: flex;
+  width: 50rem;
+  background: red;
+
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 2%;
+}
+
+.players h2 {
+  font-size: 2rem;
+}
+.players span {
+  color: burlywood;
+}
