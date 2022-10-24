@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <h1>Let's Play some Tic-Tac-Toe!</h1>
+      <h1 id="header">Let's Play some Tic-Tac-Toe!</h1>
     </header>
     <div class="container">
       <div class="field" data-num="0"></div>
@@ -32,6 +32,13 @@
         <h2>Player 2: <span id="player2">Please Wait...</span></h2>
       </div>
     </div>
-    <div class="play--btn"><button>Play</button></div>
+    <div class="play--btn">
+      <button>Play</button>
+    </div>
+    <div class="display--end">
+      <h1>GAME <span>OVER!</span></h1>
+      <h2 class="results"></h2>
+      <div><button id="restart">Restart Game</button></div>
+    </div>
   </body>
 </html>

@@ -2,9 +2,12 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background: #fff;
+}
+
 .container {
   box-sizing: border-box;
-
   padding: 1rem;
   border-radius: 0.5rem;
   background: yellow;
@@ -73,4 +76,64 @@ button:hover {
   color: blue;
   background: yellow;
   cursor: pointer;
+}
+
+.display--end {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 36%;
+  padding: 2rem;
+}
+
+.display--end div {
+  position: absolute;
+  top: 88%;
+  left: 38%;
+}
+
+.display--end h1 {
+  color: #fff;
+  font-size: 6rem;
+}
+.display--end h1:hover {
+  color: yellow;
+}
+
+.display--end span {
+  color: red;
+}
+.results {
+  font-size: 4rem;
+  text-align: center;
+  color: #fff;
+}
+
+#restart {
+  /* width: 5rem; */
+  height: 150%;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 992px) {
+  .display--end {
+    left: 28%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .display--end {
+    left: 20%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .display--end {
+    left: 15%;
+  }
+}
+@media screen and (max-width: 525px) {
+  .display--end h1 {
+    font-size: 5rem;
+  }
 }
