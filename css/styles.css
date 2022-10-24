@@ -25,6 +25,7 @@ header {
 .field {
   border-radius: 0.5rem;
   background: blue;
+  height: 12.5rem;
 }
 
 .players {
@@ -44,11 +45,11 @@ header {
   color: burlywood;
 }
 
-.field span {
+.field {
   font-size: 10rem;
-  height: 100%;
   color: #fff;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
