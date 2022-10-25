@@ -3,6 +3,9 @@ let play = document.querySelector(".play--btn");
 let trackPlayer = document.querySelector(".players");
 play.addEventListener("click", startgame);
 
+let displayEnd = document.querySelector(".display--end");
+let results = document.querySelector(".results");
+
 function startgame() {
   play.style.display = "none";
   trackPlayer.style.display = "flex";
@@ -30,12 +33,7 @@ const gameBoard = (function () {
 // Create players
 const Players = function (name, weapon) {
   weapon = weapon.toUpperCase();
-  const playerIntro = () => {
-    console.log(
-      `Welcome ${name}, your weapon of choice is ${weapon.toUpperCase()}`
-    );
-  };
-  return { name, playerIntro, weapon };
+  return { name, weapon };
 };
 
 const player1 = new Players("Ramiz", "x");
@@ -49,8 +47,9 @@ function clicked(e) {
   if (game.player1Wins || game.player2Wins || game.tieGame) return;
 
   // Check to see if the spot that was clicked is unavaible
-  if (gameBoard.board[dataNum] === "X" || gameBoard.board[dataNum] === "O")
+  if (gameBoard.board[dataNum] === "X" || gameBoard.board[dataNum] === "O") {
     return;
+  }
 
   if (player1.turn) {
     gameBoard.board.splice(dataNum, 1, player1.weapon);
@@ -87,14 +86,23 @@ const game = (function (player1, player2) {
     [2, 4, 6],
     [0, 4, 8],
   ];
+  _arrayEquals: function arrayEquals(a, b) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
+  }
   player1.turn = true;
   player2.turn = false;
   let board = gameBoard.board;
+
+  // Check to see if a player has scored three in a row
   winner: function winner() {
     let locationOfXs = [];
     let locationOfOs = [];
 
-    // Check to see if a player has scored three in a row
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "X") {
         locationOfXs.push(i);
@@ -145,51 +153,27 @@ const game = (function (player1, player2) {
   return { player1, player2, winner, tieGame, player1Wins, player2Wins };
 })(player1, player2);
 
-// checks if winCombos elements is equal to combos of o or x
-function arrayEquals(a, b) {
-  return (
-    Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index])
-  );
-}
-
-let displayEnd = document.querySelector(".display--end");
 function gameOver() {
-  let header = document.getElementById("header");
-  let results = document.querySelector(".results");
-  let body = document.querySelector("body");
-  if (game.player1Wins) {
+  if (game.player1Wins || game.player2Wins || game.tieGame) {
+    let header = document.getElementById("header");
+    let body = document.querySelector("body");
     trackPlayer.style.display = "none";
     gameBoard.field.style.display = "none";
     body.style.backgroundColor = "#000";
     header.style.display = "none";
     displayEnd.style.display = "block";
+  }
+
+  if (game.player1Wins) {
     results.textContent = "Player 1 Wins!";
     console.log("p1");
   }
   if (game.player2Wins) {
-    trackPlayer.style.display = "none";
-    gameBoard.field.style.display = "none";
-    body.style.backgroundColor = "#000";
-    document.body.backgroundColor = "#000";
-    header.style.display = "none";
-    displayEnd.style.display = "block";
     results.textContent = "Player 2 Wins!";
     console.log("p2");
   }
   if (game.tieGame) {
-    trackPlayer.style.display = "none";
-    gameBoard.field.style.display = "none";
-    body.style.backgroundColor = "#000";
-    document.body.backgroundColor = "#000";
-    // header.style.display = "none";
-    displayEnd.style.display = "block";
     results.textContent = "Tie Game!";
     console.log("tie");
-  }
-  {
-    return displayEnd;
   }
 }
