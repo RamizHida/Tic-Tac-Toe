@@ -166,14 +166,11 @@ function gameOver() {
 
   if (game.player1Wins) {
     results.textContent = "Player 1 Wins!";
-    console.log("p1");
   }
   if (game.player2Wins) {
     results.textContent = "Player 2 Wins!";
-    console.log("p2");
   }
   if (game.tieGame) {
     results.textContent = "Tie Game!";
-    console.log("tie");
   }
 }
