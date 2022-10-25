@@ -9,6 +9,7 @@ body {
 .container {
   box-sizing: border-box;
   padding: 1rem;
+  padding-bottom: 0.8rem;
   border-radius: 0.5rem;
   background: yellow;
   height: 40rem;
@@ -28,14 +29,16 @@ header {
 .field {
   border-radius: 0.5rem;
   background: blue;
-  height: 12.5rem;
+  height: 12rem;
+}
+
+.hover:hover {
+  background: #0606b2;
 }
 
 .players {
   display: none;
   width: 50rem;
-  background: red;
-
   justify-content: space-between;
   margin: auto;
   margin-top: 2%;
@@ -45,7 +48,7 @@ header {
   font-size: 2rem;
 }
 .players span {
-  color: burlywood;
+  color: Blue;
 }
 
 .field {
@@ -109,10 +112,8 @@ button:hover {
   color: #fff;
 }
 
-#restart {
-  /* width: 5rem; */
-  height: 150%;
-  padding: 1rem;
+.results span {
+  color: red;
 }
 
 @media screen and (max-width: 992px) {

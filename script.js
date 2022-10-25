@@ -7,6 +7,9 @@ function startgame() {
   play.style.display = "none";
   trackPlayer.style.display = "flex";
   gameBoard.field.addEventListener("click", clicked);
+  for (const field of gameBoard.children) {
+    field.classList.add("hover");
+  }
 }
 
 // Create gameboard
@@ -18,6 +21,7 @@ const gameBoard = (function () {
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "d") continue;
       children[i].textContent = board[i];
+      children[i].classList.remove("hover");
     }
   }
   return { display, board, field, children };
@@ -137,13 +141,6 @@ const game = (function (player1, player2) {
       return;
     }
   }
-  // gameOver: function gameOver() {
-  //   if (tieGame || player1Wins || player2Wins);
-  //   {
-  //     console.log("lol");
-  //     document.body.style.background = "black";
-  //   }
-  // }
 
   return { player1, player2, winner, tieGame, player1Wins, player2Wins };
 })(player1, player2);
@@ -158,11 +155,9 @@ function arrayEquals(a, b) {
   );
 }
 
+let displayEnd = document.querySelector(".display--end");
 function gameOver() {
-  // let header = document.getElementById("header");
-  // let div = document.createElement("div");
-  // let finalMessage = document.createElement("h1");
-  let displayEnd = document.querySelector(".display--end");
+  let header = document.getElementById("header");
   let results = document.querySelector(".results");
   let body = document.querySelector("body");
   if (game.player1Wins) {
@@ -178,6 +173,7 @@ function gameOver() {
     trackPlayer.style.display = "none";
     gameBoard.field.style.display = "none";
     body.style.backgroundColor = "#000";
+    document.body.backgroundColor = "#000";
     header.style.display = "none";
     displayEnd.style.display = "block";
     results.textContent = "Player 2 Wins!";
@@ -187,9 +183,13 @@ function gameOver() {
     trackPlayer.style.display = "none";
     gameBoard.field.style.display = "none";
     body.style.backgroundColor = "#000";
-    header.style.display = "none";
+    document.body.backgroundColor = "#000";
+    // header.style.display = "none";
     displayEnd.style.display = "block";
     results.textContent = "Tie Game!";
     console.log("tie");
+  }
+  {
+    return displayEnd;
   }
 }
